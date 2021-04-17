@@ -4,7 +4,8 @@ const (
 	// EnvPort const
 	EnvPort = "PORT"
 	// EnvConfigFile const
-	EnvConfigFile = "$GOPATH/src/gitlab.com/auth-service"
+	// EnvConfigFile = "$GOPATH/src/gitlab.com/farkroft/auth-service"
+	EnvConfigFile = "./"
 	// EnvConfigPath const
 	EnvConfigPath = "/app"
 	// EnvDBHost const

@@ -4,9 +4,9 @@ import (
 	"fmt"
 
 	"github.com/jinzhu/gorm"
-	"gitlab.com/auth-service/application/request"
-	"gitlab.com/auth-service/external/database"
-	"gitlab.com/auth-service/internal/model"
+	"gitlab.com/farkroft/auth-service/application/request"
+	"gitlab.com/farkroft/auth-service/external/database"
+	"gitlab.com/farkroft/auth-service/internal/model"
 )
 
 // UserRepository interface

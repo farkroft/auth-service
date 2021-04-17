@@ -6,9 +6,9 @@ import (
 	"github.com/jinzhu/gorm"
 	// postgres driver
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-	"gitlab.com/auth-service/external/config"
-	"gitlab.com/auth-service/external/constants"
-	"gitlab.com/auth-service/internal/model"
+	"gitlab.com/farkroft/auth-service/external/config"
+	"gitlab.com/farkroft/auth-service/external/constants"
+	"gitlab.com/farkroft/auth-service/internal/model"
 )
 
 // Database struct

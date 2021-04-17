@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/dgrijalva/jwt-go"
-	"gitlab.com/auth-service/application/request"
+	"gitlab.com/farkroft/auth-service/application/request"
 )
 
 type MockUseCase struct{}

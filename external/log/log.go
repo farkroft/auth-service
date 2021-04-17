@@ -5,7 +5,7 @@ import (
 	"runtime"
 
 	"github.com/sirupsen/logrus"
-	"gitlab.com/auth-service/external/util"
+	"gitlab.com/farkroft/auth-service/external/util"
 )
 
 // WIBFormatter struct

@@ -3,7 +3,7 @@ package presenter
 import (
 	"fmt"
 
-	"gitlab.com/auth-service/application/response"
+	"gitlab.com/farkroft/auth-service/application/response"
 )
 
 // ErrorPresenter presenter of error response

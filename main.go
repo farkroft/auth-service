@@ -1,15 +1,14 @@
 package main
 
 import (
-	"gitlab.com/auth-service/application/controller"
-	"gitlab.com/auth-service/application/repository"
-	"gitlab.com/auth-service/application/usecase"
-	"gitlab.com/auth-service/external/database"
-	"gitlab.com/auth-service/external/server"
-
-	"gitlab.com/auth-service/external/config"
-	"gitlab.com/auth-service/external/constants"
-	"gitlab.com/auth-service/external/log"
+	"gitlab.com/farkroft/auth-service/application/controller"
+	"gitlab.com/farkroft/auth-service/application/repository"
+	"gitlab.com/farkroft/auth-service/application/usecase"
+	"gitlab.com/farkroft/auth-service/external/config"
+	"gitlab.com/farkroft/auth-service/external/constants"
+	"gitlab.com/farkroft/auth-service/external/database"
+	"gitlab.com/farkroft/auth-service/external/log"
+	"gitlab.com/farkroft/auth-service/external/server"
 )
 
 func main() {

@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"gitlab.com/auth-service/external/log"
+	"gitlab.com/farkroft/auth-service/external/log"
 )
 
 // Ping controller

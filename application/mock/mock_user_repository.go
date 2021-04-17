@@ -1,8 +1,8 @@
 package mock
 
 import (
-	"gitlab.com/auth-service/application/request"
-	"gitlab.com/auth-service/internal/model"
+	"gitlab.com/farkroft/auth-service/application/request"
+	"gitlab.com/farkroft/auth-service/internal/model"
 )
 
 type MockRepository struct{}

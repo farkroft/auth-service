@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"gitlab.com/auth-service/application/usecase"
+	"gitlab.com/farkroft/auth-service/application/usecase"
 )
 
 // Controller struct

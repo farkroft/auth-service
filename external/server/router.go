@@ -2,7 +2,7 @@ package server
 
 import (
 	"github.com/gin-gonic/gin"
-	"gitlab.com/auth-service/application/controller"
+	"gitlab.com/farkroft/auth-service/application/controller"
 )
 
 // NewRouter router

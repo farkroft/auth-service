@@ -8,10 +8,10 @@ import (
 
 	uuid "github.com/farkroft/go.uuid"
 
-	"gitlab.com/auth-service/application/request"
+	"gitlab.com/farkroft/auth-service/application/request"
 
 	"github.com/jinzhu/gorm"
-	"gitlab.com/auth-service/application/repository"
+	"gitlab.com/farkroft/auth-service/application/repository"
 	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 )
 

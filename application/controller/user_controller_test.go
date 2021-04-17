@@ -10,14 +10,14 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"gitlab.com/auth-service/application/response"
+	"gitlab.com/farkroft/auth-service/application/response"
 
-	"gitlab.com/auth-service/application/request"
+	"gitlab.com/farkroft/auth-service/application/request"
 
-	"gitlab.com/auth-service/application/controller"
+	"gitlab.com/farkroft/auth-service/application/controller"
 
 	"github.com/gin-gonic/gin"
-	"gitlab.com/auth-service/application/mock"
+	"gitlab.com/farkroft/auth-service/application/mock"
 )
 
 func TestRegisterUserShouldSuccessAndReturn200(t *testing.T) {

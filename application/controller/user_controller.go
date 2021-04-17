@@ -5,13 +5,13 @@ import (
 	"net/http"
 	"strings"
 
-	"gitlab.com/auth-service/external/util"
+	"gitlab.com/farkroft/auth-service/external/util"
 
-	"gitlab.com/auth-service/application/presenter"
+	"gitlab.com/farkroft/auth-service/application/presenter"
 
 	"github.com/gin-gonic/gin"
-	"gitlab.com/auth-service/application/request"
-	"gitlab.com/auth-service/external/log"
+	"gitlab.com/farkroft/auth-service/application/request"
+	"gitlab.com/farkroft/auth-service/external/log"
 )
 
 // Register new account

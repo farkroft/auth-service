@@ -6,11 +6,11 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"gitlab.com/auth-service/application/request"
+	"gitlab.com/farkroft/auth-service/application/request"
 
-	"gitlab.com/auth-service/application/mock"
+	"gitlab.com/farkroft/auth-service/application/mock"
 
-	"gitlab.com/auth-service/application/usecase"
+	"gitlab.com/farkroft/auth-service/application/usecase"
 )
 
 func TestUserRegisterUseCaseShouldSuccessAndReturn201(t *testing.T) {

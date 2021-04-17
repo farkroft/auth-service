@@ -2,7 +2,7 @@ package config
 
 import (
 	"github.com/spf13/viper"
-	"gitlab.com/auth-service/external/constants"
+	"gitlab.com/farkroft/auth-service/external/constants"
 )
 
 // Repository repository

@@ -7,7 +7,7 @@ stages:
 
 unit-testing:
   stage: testing
-  image: golang:1.12-alpine
+  image: golang:1.16-alpine
   script:
     - apk update && apk add --no-cache git build-base
     - export GO111MODULE=on

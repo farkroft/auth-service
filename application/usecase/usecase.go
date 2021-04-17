@@ -2,9 +2,9 @@ package usecase
 
 import (
 	"github.com/dgrijalva/jwt-go"
-	"gitlab.com/auth-service/application/repository"
-	"gitlab.com/auth-service/application/request"
-	"gitlab.com/auth-service/external/config"
+	"gitlab.com/farkroft/auth-service/application/repository"
+	"gitlab.com/farkroft/auth-service/application/request"
+	"gitlab.com/farkroft/auth-service/external/config"
 )
 
 // CaseRepo interface
