@@ -5,18 +5,13 @@ import (
 	"net/http"
 	"time"
 
-	"gitlab.com/farkroft/auth-service/application/response"
-
-	"gitlab.com/farkroft/auth-service/external/constants"
-
-	"gitlab.com/farkroft/auth-service/external/util"
-
 	"github.com/dgrijalva/jwt-go"
-
-	"golang.org/x/crypto/bcrypt"
-
 	"gitlab.com/farkroft/auth-service/application/request"
+	"gitlab.com/farkroft/auth-service/application/response"
+	"gitlab.com/farkroft/auth-service/external/constants"
 	"gitlab.com/farkroft/auth-service/external/log"
+	"gitlab.com/farkroft/auth-service/external/util"
+	"golang.org/x/crypto/bcrypt"
 )
 
 // UserRegister usecase for register user

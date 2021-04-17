@@ -23,4 +23,6 @@ const (
 	// EnvJWTSecret const
 	EnvJWTSecret = "JWT_SECRET_KEY"
 	// EnvJWTAlgo const
+	// LogFile name
+	LogFile = "auth_service.log"
 )

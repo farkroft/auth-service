@@ -5,11 +5,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"gitlab.com/farkroft/auth-service/application/request"
-
 	"gitlab.com/farkroft/auth-service/application/mock"
-
+	"gitlab.com/farkroft/auth-service/application/request"
 	"gitlab.com/farkroft/auth-service/application/usecase"
 )
 

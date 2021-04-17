@@ -2,9 +2,13 @@ package log
 
 import (
 	"fmt"
+	"io"
+	"log"
+	"os"
 	"runtime"
 
 	"github.com/sirupsen/logrus"
+	"gitlab.com/farkroft/auth-service/external/constants"
 	"gitlab.com/farkroft/auth-service/external/util"
 )
 
@@ -23,6 +27,15 @@ func NewLogger() {
 	case logrus.InfoLevel:
 		logrus.SetFormatter(WIBFormatter{&logrus.TextFormatter{FullTimestamp: true}})
 	}
+
+	f, err := os.OpenFile(fmt.Sprintf("%s%s", constants.EnvConfigFile, constants.LogFile), os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
+	if err != nil {
+		log.Fatalf("cannot open file log: %s", err.Error())
+	}
+
+	defer f.Close()
+	mw := io.MultiWriter(os.Stdout, f)
+	logrus.SetOutput(mw)
 }
 
 // Format return time formatted with timezone
