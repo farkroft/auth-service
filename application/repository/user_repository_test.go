@@ -4,14 +4,11 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-
-	uuid "github.com/farkroft/go.uuid"
-
-	"gitlab.com/farkroft/auth-service/application/request"
-
 	"github.com/jinzhu/gorm"
+	uuid "github.com/satori/go.uuid"
+	"github.com/stretchr/testify/assert"
 	"gitlab.com/farkroft/auth-service/application/repository"
+	"gitlab.com/farkroft/auth-service/application/request"
 	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 )
 

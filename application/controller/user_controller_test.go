@@ -8,16 +8,12 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-
-	"gitlab.com/farkroft/auth-service/application/response"
-
-	"gitlab.com/farkroft/auth-service/application/request"
-
-	"gitlab.com/farkroft/auth-service/application/controller"
-
 	"github.com/gin-gonic/gin"
+	"github.com/stretchr/testify/assert"
+	"gitlab.com/farkroft/auth-service/application/controller"
 	"gitlab.com/farkroft/auth-service/application/mock"
+	"gitlab.com/farkroft/auth-service/application/request"
+	"gitlab.com/farkroft/auth-service/application/response"
 )
 
 func TestRegisterUserShouldSuccessAndReturn200(t *testing.T) {
