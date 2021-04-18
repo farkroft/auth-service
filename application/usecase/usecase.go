@@ -5,6 +5,7 @@ import (
 	"gitlab.com/farkroft/auth-service/application/repository"
 	"gitlab.com/farkroft/auth-service/application/request"
 	"gitlab.com/farkroft/auth-service/external/config"
+	"gitlab.com/farkroft/auth-service/external/redis"
 )
 
 // CaseRepo interface
@@ -18,12 +19,14 @@ type CaseRepo interface {
 type UseCase struct {
 	UserRepo repository.UserRepository
 	Cfg      config.Repository
+	Redis    redis.Repository
 }
 
 // NewUsecase return data source instance
-func NewUsecase(repo repository.UserRepository, cfg config.Repository) *UseCase {
+func NewUsecase(repo repository.UserRepository, cfg config.Repository, rd redis.Repository) *UseCase {
 	return &UseCase{
 		UserRepo: repo,
 		Cfg:      cfg,
+		Redis:    rd,
 	}
 }

@@ -1,6 +1,8 @@
 package usecase
 
 import (
+	"context"
+	"errors"
 	"fmt"
 	"net/http"
 	"time"
@@ -63,8 +65,11 @@ func (u *UseCase) UserLogin(req request.UserRequest) (int, string, interface{}, 
 		log.Errorf("get user", err)
 		return http.StatusInternalServerError, "get user", nil, err
 	}
+
+	fmt.Println(u.Cfg.GetInt(constants.EnvJWTPeriod))
+
 	now := util.WIBTimezone(util.Now())
-	expiredAt := now.Add(time.Minute * constants.TwelveHoursInMinute).Unix()
+	expiredAt := now.Add(time.Minute * time.Duration(u.Cfg.GetInt(constants.EnvJWTPeriod))).Unix()
 	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(req.Password))
 	if err != nil && err == bcrypt.ErrMismatchedHashAndPassword {
 		log.Errorf("hash pass", err)
@@ -84,6 +89,12 @@ func (u *UseCase) UserLogin(req request.UserRequest) (int, string, interface{}, 
 	if err != nil {
 		log.Errorf("token decode", err)
 		return http.StatusInternalServerError, "token decode", nil, err
+	}
+
+	err = u.Redis.Set(context.TODO(), user.ID.String(), tokenStr, u.Cfg.GetInt(constants.EnvJWTPeriod), "min")
+	if err != nil {
+		log.Errorf("save token to redis", err)
+		return http.StatusInternalServerError, "save token to redis", nil, err
 	}
 
 	resp := response.LoginResponse{
@@ -118,6 +129,20 @@ func (u *UseCase) UserAuthVerify(str string) (*jwt.Token, error) {
 		return nil, err
 	}
 
+	tokenRedis, err := u.Redis.Get(context.TODO(), extractUserID(claims))
+	if err != nil {
+		return nil, err
+	}
+
+	tokenStr, err := token.SignedString([]byte(u.Cfg.GetString(constants.EnvJWTSecret)))
+	if err != nil {
+		return nil, err
+	}
+
+	if tokenRedis != tokenStr {
+		return nil, errors.New("token is invalid")
+	}
+
 	return token, nil
 }
 
@@ -129,9 +154,18 @@ func extractClaims(claims jwt.MapClaims) int64 {
 
 func isTokenExpired(expiredAt int64) bool {
 	nowUnix := util.WIBTimezone(util.Now()).Unix()
-	if expiredAt < nowUnix {
-		return true
+	return expiredAt < nowUnix
+}
+
+func extractUserID(claims jwt.MapClaims) string {
+	userID := claims["UserID"]
+
+	switch v := userID.(type) {
+	case string:
+		return v
+	case nil:
+		return ""
 	}
 
-	return false
+	return ""
 }

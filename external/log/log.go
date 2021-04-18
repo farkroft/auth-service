@@ -33,7 +33,7 @@ func NewLogger() {
 		log.Fatalf("cannot open file log: %s", err.Error())
 	}
 
-	defer f.Close()
+	// defer f.Close()
 	mw := io.MultiWriter(os.Stdout, f)
 	logrus.SetOutput(mw)
 }

@@ -8,6 +8,7 @@ import (
 // Repository repository
 type Repository interface {
 	GetString(str string) string
+	GetInt(str string) int
 }
 
 // Config return struct of viper
@@ -36,4 +37,8 @@ func NewConfig(configPath string) *Config {
 // GetString return string from env var
 func (c *Config) GetString(str string) string {
 	return c.cfg.GetString(str)
+}
+
+func (c *Config) GetInt(str string) int {
+	return c.cfg.GetInt(str)
 }

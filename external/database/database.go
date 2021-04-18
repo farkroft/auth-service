@@ -2,6 +2,7 @@ package database
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/jinzhu/gorm"
 	// postgres driver
@@ -17,7 +18,7 @@ type Database struct {
 }
 
 // NewDatabase init new database
-func NewDatabase(cfg *config.Config) (*Database, error) {
+func NewDatabase(cfg *config.Config) *Database {
 	connString := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
 		cfg.GetString(constants.EnvDBHost),
 		cfg.GetString(constants.EnvDBPort),
@@ -26,10 +27,10 @@ func NewDatabase(cfg *config.Config) (*Database, error) {
 		cfg.GetString(constants.EnvDBName))
 	db, err := gorm.Open("postgres", connString)
 	if err != nil {
-		return &Database{db}, err
+		log.Fatalf("database client: %s", err.Error())
 	}
 
-	return &Database{db}, err
+	return &Database{db}
 }
 
 // Close to close connection

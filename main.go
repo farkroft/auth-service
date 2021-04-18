@@ -8,17 +8,15 @@ import (
 	"gitlab.com/farkroft/auth-service/external/constants"
 	"gitlab.com/farkroft/auth-service/external/database"
 	"gitlab.com/farkroft/auth-service/external/log"
+	"gitlab.com/farkroft/auth-service/external/redis"
 	"gitlab.com/farkroft/auth-service/external/server"
 )
 
 func main() {
 	log.NewLogger()
 	v := config.NewConfig(constants.EnvConfigFile)
-	db, err := database.NewDatabase(v)
-	if err != nil {
-		panic(err)
-	}
-	err = db.Migrate()
+	db := database.NewDatabase(v)
+	err := db.Migrate()
 	if err != nil {
 		log.Errorf("migrate", err)
 	}
@@ -28,8 +26,9 @@ func main() {
 			panic(err)
 		}
 	}()
+	rd := redis.NewRedis(v)
 	userRepo := repository.NewUserRepository(db)
-	usecase := usecase.NewUsecase(userRepo, v)
+	usecase := usecase.NewUsecase(userRepo, v, rd)
 	ctl := controller.NewController(usecase)
 	server.NewServer(v, ctl)
 }

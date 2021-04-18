@@ -5,13 +5,14 @@ go 1.16
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/farkroft/go.uuid v1.2.0
-	github.com/gin-contrib/logger v0.0.3 // indirect
+	github.com/gin-contrib/logger v0.0.3
 	github.com/gin-gonic/gin v1.6.3
+	github.com/go-redis/redis/v8 v8.8.2
 	github.com/jinzhu/gorm v1.9.12
 	github.com/satori/go.uuid v1.2.0
 	github.com/sirupsen/logrus v1.2.0
 	github.com/spf13/viper v1.6.2
-	github.com/stretchr/testify v1.4.0
-	golang.org/x/crypto v0.0.0-20191205180655-e7c4368fe9dd
+	github.com/stretchr/testify v1.7.0
+	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
 	gopkg.in/DATA-DOG/go-sqlmock.v1 v1.3.0
 )

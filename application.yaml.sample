@@ -5,3 +5,4 @@ DB_USER: "postgres"
 DB_PASS: "postgres"
 DB_NAME: "auth_service"
 JWT_SECRET_KEY: "your secret"
+JWT_PERIOD: 1440

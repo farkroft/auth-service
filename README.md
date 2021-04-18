@@ -6,6 +6,7 @@ docker-compose up
 see logs:
 docker logs -f -t <container-name>
 
-list feature:
-- signup new user
-- login
+/ping
+/register
+/login
+/verify-auth

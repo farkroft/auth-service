@@ -18,11 +18,17 @@ const (
 	EnvDBPass = "DB_PASS"
 	// EnvDBName const
 	EnvDBName = "DB_NAME"
-	// TwelveHoursInMinute const
-	TwelveHoursInMinute = 1440
 	// EnvJWTSecret const
 	EnvJWTSecret = "JWT_SECRET_KEY"
 	// EnvJWTAlgo const
 	// LogFile name
 	LogFile = "auth_service.log"
+	// EnvJWTPeriod const
+	EnvJWTPeriod = "JWT_PERIOD_MIN"
+	//
+	EnvRedisHost = "REDIS_HOST"
+	//
+	EnvRedisPass = "REDIS_PASS"
+	//
+	EnvRedisDB = "REDIS_DB"
 )

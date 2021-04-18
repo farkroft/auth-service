@@ -45,7 +45,7 @@ func TestRegisterUserRepositoryShouldSuccessAndReturnUserModel(t *testing.T) {
 		t.Errorf("there were unfulfilled expectations %v", err)
 	}
 
-	assert.Equal(t, id, user.ID)
+	assert.Equal(t, id.String(), user.ID.String())
 	assert.Equal(t, userReq.Username, user.Username)
 	assert.Equal(t, userReq.Password, user.Password)
 }
