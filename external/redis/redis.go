@@ -13,6 +13,7 @@ import (
 type Repository interface {
 	Set(ctx context.Context, key string, value interface{}, exp int, duration string) error
 	Get(ctx context.Context, key string) (string, error)
+	Delete(ctx context.Context, keys ...string) error
 }
 
 type Redis struct {
@@ -54,4 +55,8 @@ func (r *Redis) Get(ctx context.Context, key string) (string, error) {
 	res, err := r.Client.Get(ctx, key).Result()
 
 	return res, err
+}
+
+func (r *Redis) Delete(ctx context.Context, keys ...string) error {
+	return r.Client.Del(ctx, keys...).Err()
 }

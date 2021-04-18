@@ -11,4 +11,5 @@ func NewRouter(r *gin.Engine, ctl *controller.Controller) {
 	r.POST("/register", ctl.Register)
 	r.POST("/login", ctl.Login)
 	r.POST("/verify-auth", ctl.UserAuth)
+	r.POST("/logout", ctl.Logout)
 }

@@ -1,7 +1,6 @@
 package usecase
 
 import (
-	"github.com/dgrijalva/jwt-go"
 	"gitlab.com/farkroft/auth-service/application/repository"
 	"gitlab.com/farkroft/auth-service/application/request"
 	"gitlab.com/farkroft/auth-service/external/config"
@@ -12,7 +11,8 @@ import (
 type CaseRepo interface {
 	UserRegister(req request.UserRequest) (int, string, error)
 	UserLogin(req request.UserRequest) (int, string, interface{}, error)
-	UserAuthVerify(str string) (*jwt.Token, error)
+	UserAuthVerify(str string) (int, string, interface{}, error)
+	UserLogout(str string) (int, string, interface{}, error)
 }
 
 // UseCase given ...

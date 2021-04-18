@@ -1,17 +1,13 @@
 package controller
 
 import (
-	"fmt"
 	"net/http"
-	"strings"
-
-	"gitlab.com/farkroft/auth-service/external/util"
-
-	"gitlab.com/farkroft/auth-service/application/presenter"
 
 	"github.com/gin-gonic/gin"
+	"gitlab.com/farkroft/auth-service/application/presenter"
 	"gitlab.com/farkroft/auth-service/application/request"
 	"gitlab.com/farkroft/auth-service/external/log"
+	"gitlab.com/farkroft/auth-service/external/util"
 )
 
 // Register new account
@@ -44,50 +40,48 @@ func (ctl *Controller) Login(c *gin.Context) {
 		return
 	}
 
-	httpCode, strErr, resp, err := ctl.UserUseCase.UserLogin(req)
+	httpCode, strResp, resp, err := ctl.UserUseCase.UserLogin(req)
 	if err != nil {
 		if util.IsErrorRecordNotFound(err) {
-			c.JSON(http.StatusOK, presenter.ErrorPresenter(strErr, err))
+			c.JSON(http.StatusOK, presenter.ErrorPresenter(strResp, err))
 			return
 		}
-		log.Errorf(strErr, err)
-		c.JSON(httpCode, presenter.ErrorPresenter(strErr, err))
+		log.Errorf(strResp, err)
+		c.JSON(httpCode, presenter.ErrorPresenter(strResp, err))
 		return
 	}
 
-	c.JSON(http.StatusOK, presenter.SuccessPresenter(true, "OK", resp))
+	c.JSON(http.StatusOK, presenter.SuccessPresenter(true, strResp, resp))
 }
 
 // UserAuth vaidate token from header
 func (ctl *Controller) UserAuth(c *gin.Context) {
 	strToken := c.GetHeader("token")
-	extractedToken, err := extractToken(strToken)
-	if err != nil {
-		c.JSON(http.StatusUnauthorized, presenter.ErrorPresenter("token format", err))
-		return
-	}
 
-	token, err := ctl.UserUseCase.UserAuthVerify(extractedToken)
+	httpCode, strResp, resp, err := ctl.UserUseCase.UserAuthVerify(strToken)
 	if err != nil {
 		log.Errorf("token verify", err)
-		c.JSON(http.StatusUnauthorized, presenter.ErrorPresenter("token verify", err))
+		c.JSON(httpCode, presenter.ErrorPresenter(strResp, err))
 		return
 	}
 
-	c.JSON(http.StatusOK, presenter.SuccessPresenter(true, "token is valid", token))
+	c.JSON(http.StatusOK, presenter.SuccessPresenter(true, strResp, resp))
 }
 
-func extractToken(token string) (string, error) {
-	arrToken := strings.Split(token, " ")
-	if len(arrToken) < 2 {
-		err := fmt.Errorf("user unauthorized")
-		return "", err
+// Logout account
+func (ctl *Controller) Logout(c *gin.Context) {
+	strToken := c.GetHeader("token")
+
+	httpCode, strResp, resp, err := ctl.UserUseCase.UserLogout(strToken)
+	if err != nil {
+		if util.IsErrorRecordNotFound(err) {
+			c.JSON(http.StatusOK, presenter.ErrorPresenter(strResp, err))
+			return
+		}
+		log.Errorf(strResp, err)
+		c.JSON(httpCode, presenter.ErrorPresenter(strResp, err))
+		return
 	}
 
-	if !strings.Contains(arrToken[0], "Bearer") {
-		err := fmt.Errorf("user unauthorized")
-		return "", err
-	}
-
-	return arrToken[1], nil
+	c.JSON(http.StatusOK, presenter.SuccessPresenter(true, strResp, resp))
 }
