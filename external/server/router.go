@@ -1,6 +1,7 @@
 package server
 
 import (
+	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 	"gitlab.com/farkroft/auth-service/application/controller"
 )
@@ -12,4 +13,6 @@ func NewRouter(r *gin.Engine, ctl *controller.Controller) {
 	r.POST("/login", ctl.Login)
 	r.POST("/verify-auth", ctl.UserAuth)
 	r.POST("/logout", ctl.Logout)
+
+	pprof.Register(r)
 }

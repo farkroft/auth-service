@@ -1,6 +1,8 @@
 package main
 
 import (
+	_ "net/http/pprof"
+
 	"gitlab.com/farkroft/auth-service/application/controller"
 	"gitlab.com/farkroft/auth-service/application/repository"
 	"gitlab.com/farkroft/auth-service/application/usecase"

@@ -1,2 +1,4 @@
 application.yaml
 auth_service.log
+*.test
+*.out

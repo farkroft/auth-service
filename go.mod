@@ -6,6 +6,7 @@ require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/farkroft/go.uuid v1.2.0
 	github.com/gin-contrib/logger v0.0.3
+	github.com/gin-contrib/pprof v1.3.0
 	github.com/gin-gonic/gin v1.6.3
 	github.com/go-redis/redis/v8 v8.8.2
 	github.com/jinzhu/gorm v1.9.12
