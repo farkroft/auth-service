@@ -3,7 +3,6 @@ package mock
 import (
 	"net/http"
 
-	"github.com/dgrijalva/jwt-go"
 	"gitlab.com/farkroft/auth-service/application/request"
 )
 
@@ -14,8 +13,8 @@ func (u *MockUseCase) UserRegister(req request.UserRequest) (int, string, error)
 }
 
 func (u *MockUseCase) UserAuthVerify(str string) (int, string, interface{}, error) {
-	token := &jwt.Token{}
-	return http.StatusOK, "OK", token, nil
+	// token := &jwt.Token{}
+	return http.StatusOK, "OK", nil, nil
 }
 
 func (u *MockUseCase) UserLogin(req request.UserRequest) (int, string, interface{}, error) {
