@@ -10,3 +10,4 @@ docker logs -f -t <container-name>
 /register
 /login
 /verify-auth
+/logout
