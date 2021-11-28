@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	_ "net/http/pprof"
 
+	"github.com/google/gops/agent"
 	"gitlab.com/farkroft/auth-service/application/controller"
 	"gitlab.com/farkroft/auth-service/application/repository"
 	"gitlab.com/farkroft/auth-service/application/usecase"
@@ -15,6 +17,9 @@ import (
 )
 
 func main() {
+	if err := agent.Listen(agent.Options{}); err != nil {
+		fmt.Println(err)
+	}
 	log.NewLogger()
 	v := config.NewConfig(constants.EnvConfigFile)
 	db := database.NewDatabase(v)
